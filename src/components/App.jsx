@@ -13,26 +13,10 @@ export class App extends Component {
     bad: 0,
   };
 
-  onGood = () => {
+  onFeedback = answer => {
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-
-  onNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-
-  onBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
+        [answer]: prevState[answer] + 1,
       };
     });
   };
@@ -50,15 +34,15 @@ export class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
-    const { onGood, onNeutral, onBad } = this;
 
     return (
       <FeedbackWrapper>
         <Section title="Please leave feedback">
           <ButtonWrapper>
-            <FeedbackOptions options={'Good'} onLeaveFeedback={onGood} />
-            <FeedbackOptions options={'Neutral'} onLeaveFeedback={onNeutral} />
-            <FeedbackOptions options={'Bad'} onLeaveFeedback={onBad} />
+            <FeedbackOptions
+              options={['good', 'neutral', 'bad']}
+              onLeaveFeedback={this.onFeedback}
+            />
           </ButtonWrapper>
         </Section>
 

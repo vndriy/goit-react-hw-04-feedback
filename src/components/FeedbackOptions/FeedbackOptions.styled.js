@@ -26,3 +26,8 @@ export const StyledButton = styled.button`
     background-color: ${bgColor};
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
